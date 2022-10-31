@@ -1,0 +1,19 @@
+---
+
+- name: playbook for docker
+  hosts: AM-debian
+
+
+  tasks:
+  
+  - name: docker stop
+    shell: docker stop $(docker ps -a -q)
+    
+  - name: docker remove
+    shell: docker rm $(docker ps -a -q)
+
+  - name: docker build
+    shell: cd /home/admind/dockertest7/ && docker build -t site12:latest .
+
+  - name: docker run
+    shell: cd /home/admind/dockertest7/ && docker run -d -p 8000:80 site12

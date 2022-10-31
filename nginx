@@ -1,0 +1,41 @@
+
+
+events {
+}
+
+http {
+
+  include mime.types;
+  
+  limit_conn_zone $binary_remote_addr zone=addr:10m;
+
+  server {
+  
+    listen 80;
+    server_name 192.168.100.25;
+    root /usr/share/nginx/html;
+	
+	index index.html index.htm;
+	
+	
+	gzip on;
+	gzip_min_length 100;
+	gzip_comp_level 3;
+	
+	gzip_types text/plain;
+	gzip_types text/css;
+	gzip_types text/javascript;
+	
+	
+	location ~* \.(css)|(js)|(jpg)|(png)|(gif)$ {
+	  access_log off;
+	  expires 1M;
+	  add_header Pragma public;
+	  add_header Cache-Control public;
+	  add_header Vary Accept-Encoding;
+	  
+	  limit_conn addr 1;
+	
+    	}
+    }
+  }
