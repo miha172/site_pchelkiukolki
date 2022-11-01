@@ -16,10 +16,10 @@
 
   - name: Create Folder
     file:
-	path: /home/admind/dockertest7
-	state: directory
-	mode: 0755
-	ignore_errors: yes
+    path: /home/admind/dockertest7
+    state: directory
+    mode: 0755
+    ignore_errors: yes
 
   - name: docker build
     shell: cd /home/admind/dockertest7/ && docker build -t site12:latest .
