@@ -16,9 +16,9 @@
 
   - name: Create Folder
     file:
-    path: /home/admind/dockertest7
-    state: directory
-    mode: 0755
+      path: /home/admind/dockertest7
+      state: directory
+      mode: 0755
     ignore_errors: yes
 
   - name: docker build
