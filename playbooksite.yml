@@ -8,9 +8,11 @@
   
   - name: docker stop
     shell: docker stop $(docker ps -a -q)
+    ignore_errors: yes
     
   - name: docker remove
     shell: docker rm $(docker ps -a -q)
+    ignore_errors: yes
 
   - name: docker build
     shell: cd /home/admind/dockertest7/ && docker build -t site12:latest .
