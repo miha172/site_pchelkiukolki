@@ -3,6 +3,9 @@
 - name: playbook for docker
   hosts: AM-debian
 
+  vars:
+   source_file: .
+   destin_file: /home/admind/dockertest7
 
   tasks:
   
@@ -21,8 +24,11 @@
       mode: 0755
     ignore_errors: yes
 
+  - name: Copy Folder
+    copy: src={{source_file}}  dest={{destin_file}} mode=0555
+	
   - name: docker build
     shell: cd /home/admind/dockertest7/ && docker build -t site12:latest .
-
+	 
   - name: docker run
     shell: cd /home/admind/dockertest7/ && docker run -d -p 8000:80 site12
