@@ -29,7 +29,7 @@
       src: '{{source_file}}'
       dest: '{{destin_file}}'
       mode: '0555'
-	
+
   - name: docker build
     shell: cd /home/admind/dockertest7/ && docker build -t site12:latest .
 	 
