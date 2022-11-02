@@ -4,7 +4,7 @@
   hosts: AM-debian
 
   vars:
-   source_file: .
+   source_file: /root/ansible/workspace/Ansible_site/
    destin_file: /home/admind/dockertest7
 
   tasks:
@@ -25,7 +25,10 @@
     ignore_errors: yes
 
   - name: Copy Folder
-    copy: src={{source_file}}  dest={{destin_file}} mode=0555
+    copy: 
+      src: {{source_file}}
+      dest: {{destin_file}}
+      mode: 0555
 	
   - name: docker build
     shell: cd /home/admind/dockertest7/ && docker build -t site12:latest .
