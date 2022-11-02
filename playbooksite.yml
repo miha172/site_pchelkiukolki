@@ -8,7 +8,7 @@
    destin_file: /home/admind/dockertest7
 
   tasks:
-  
+
   - name: docker stop
     shell: docker stop $(docker ps -a -q)
     ignore_errors: yes
@@ -29,7 +29,7 @@
       src: '{{source_file}}'
       dest: '{{destin_file}}'
       mode: '0555'
-	  
+
   - name: docker build
     shell: cd /home/admind/dockertest7/ && docker build -t site12:latest .
 
